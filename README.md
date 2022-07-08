@@ -31,24 +31,24 @@ None of the variables are mandatory, except you have to specify at least one ser
     # Specify a DHCP or BOOTP server to relay to. The server may be given as a machine
     # name or dotted-quad IP address. More than one server may be specified.
     servers:
-    - 192.0.2.123
-    - 192.0.2.124
+      - 192.0.2.123
+      - 192.0.2.124
     # Relay to a DHCP or BOOTP server using broadcast via the specified interfaces.
     # This eliminates the need to give a server address. The interfaces are automatically
     # added to the list of interfaces which will not receive DHCP requests.
     broadcast_interfaces:
-    - eth0
-    - eth1
+      - eth0
+      - eth1
     # Specify which local interfaces to listen on for DHCP/BOOTP  broadcasts. If no
     # servers are specified, all interfaces are used except those specified in
     # exclude_interfaces and those specified in broadcast_interfaces.
     listen_interfaces:
-    - eth2
-    - eth3
+      - eth2
+      - eth3
     # Specify which local interfaces to exclude.
     exclude_interfaces:
-    - eth4
-    - eth5
+      - eth4
+      - eth5
     # Use alternative ports (1067/1068) for the DHCP client and server.
     alternative_ports: false
 
