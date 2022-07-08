@@ -41,7 +41,7 @@ DHCPHELPER_OPTS="
 {%-   endfor -%}
 {%- endif -%}
 
-{%- if alternative_ports -%}
+{%- if alternative_ports is defined and alternative_ports -%}
   {{ parameter("-p") }}
 {%- endif -%}
 
