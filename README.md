@@ -15,6 +15,12 @@ the network containing the DHCP server, use the `servers` variable instead.
 
 ## Example usage
 
+Below is a sample Ansible Playbook that will use this role, with documentation of the
+various possible options in-line.
+
+None of the variables are mandatory, except you have to specify at least one server
+(under servers) or one interface under broadcast_interfaces.
+
 ```yaml
 ---
 - name: Deploy DHCP Helper
