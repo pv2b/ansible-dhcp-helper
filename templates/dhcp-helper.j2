@@ -38,10 +38,10 @@ DHCPHELPER_OPTS="
 {%- endif -%}
 
 {%- if pidfile -%}
-  {{ parameter("-r" ~ pidfile) }}
+  {{ parameter("-r " ~ pidfile) }}
 {%- endif -%}
 
 {%- if user -%}
-  {{ parameter("-u" ~ user) }}
+  {{ parameter("-u " ~ user) }}
 {%- endif -%}
 "
