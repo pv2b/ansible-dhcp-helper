@@ -1,3 +1,13 @@
+{% set ns = namespace(first=true) %}
+{% macro parameter(p) %}
+{%   if ns.first %}
+{%     set ns.first = false %}
+{%   else %}
+{{     " " }}
+{%-  endif %}
+{{ p }}
+{%- endmacro -%}
+
 # Option flags used to start dhcp-helper.
 #
 # You will need at least "-s <DHCP server>" or
@@ -6,4 +16,32 @@
 #
 # See "man 8 dhcp-helper" for more details.
 
-DHCPHELPER_OPTS="{{ dhcphelper_opts }}"
+DHCPHELPER_OPTS="
+{%- for server in servers -%}
+  {{ parameter("-s " ~ server) }}
+{%- endfor -%}
+
+{%- for interface in broadcast_interfaces -%}
+  {{ parameter("-b " ~ interface) }}
+{%- endfor -%}
+
+{%- for interface in listen_interfaces -%}
+  {{ parameter("-i " ~ interface) }}
+{%- endfor -%}
+
+{%- for interface in exclude_interfaces -%}
+  {{ parameter("-e " ~ interface) }}
+{%- endfor -%}
+
+{%- if alternative_ports -%}
+  {{ parameter("-p") }}
+{%- endif -%}
+
+{%- if pidfile -%}
+  {{ parameter("-r" ~ pidfile) }}
+{%- endif -%}
+
+{%- if user -%}
+  {{ parameter("-u" ~ user) }}
+{%- endif -%}
+"
