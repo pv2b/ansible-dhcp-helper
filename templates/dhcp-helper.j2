@@ -17,31 +17,39 @@
 # See "man 8 dhcp-helper" for more details.
 
 DHCPHELPER_OPTS="
-{%- for server in servers -%}
-  {{ parameter("-s " ~ server) }}
-{%- endfor -%}
+{%- if servers is defined -%}
+{%-    for server in servers -%}
+{{       parameter("-s " ~ server) }}
+{%-   endfor %}
+{%- endif -%}
 
-{%- for interface in broadcast_interfaces -%}
-  {{ parameter("-b " ~ interface) }}
-{%- endfor -%}
+{%- if broadcast_interfaces is defined %}
+{%-   for interface in broadcast_interfaces -%}
+{{      parameter("-b " ~ interface) }}
+{%-   endfor -%}
+{%- endif -%}
 
-{%- for interface in listen_interfaces -%}
-  {{ parameter("-i " ~ interface) }}
-{%- endfor -%}
+{%- if listen_interfaces is defined %}
+{%-   for interface in listen_interfaces -%}
+{{      parameter("-i " ~ interface) }}
+{%-   endfor -%}
+{%- endif -%}
 
-{%- for interface in exclude_interfaces -%}
-  {{ parameter("-e " ~ interface) }}
-{%- endfor -%}
+{%- if exclude_interfaces is defined %}
+{%-   for interface in exclude_interfaces -%}
+{{      parameter("-e " ~ interface) }}
+{%-   endfor -%}
+{%- endif -%}
 
 {%- if alternative_ports -%}
   {{ parameter("-p") }}
 {%- endif -%}
 
-{%- if pidfile -%}
+{%- if pidfile is defined -%}
   {{ parameter("-r" ~ pidfile) }}
 {%- endif -%}
 
-{%- if user -%}
+{%- if user is defined -%}
   {{ parameter("-u" ~ user) }}
 {%- endif -%}
 "
