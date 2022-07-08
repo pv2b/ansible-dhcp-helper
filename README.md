@@ -13,7 +13,7 @@ the DHCP server in the `broadcast_interfaces` variable. All the other interfaces
 the machine will then accept DHCP requests. On a machine which does not have an interface on
 the network containing the DHCP server, use the `servers` variable instead.
 
-## Example usage:
+## Example usage
 
 ```yaml
 ---
@@ -66,6 +66,13 @@ Major parts of the README file have been lifted straight from the
 written by Simon Kelley <<simon@thekelleys.org.uk>>, who is also the author of dhcp-helper itself.
 
 The Ansible role itself is written by Per von Zweigbergk <<pvz@pvz.pp.se>>.
+
+## Notes
+
+The Ansible role has only been tested on Raspberry Pi OS, but it's likely to work on any modern
+Debian or Debian-derived Linux distribution, such as Ubuntu.
+
+It will definitely not work in its current state on any other non-Debian-derived Linux distributions.
 
 ## Copying
 
