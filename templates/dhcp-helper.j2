@@ -46,10 +46,10 @@ DHCPHELPER_OPTS="
 {%- endif -%}
 
 {%- if pidfile is defined -%}
-  {{ parameter("-r" ~ pidfile) }}
+  {{ parameter("-r " ~ pidfile) }}
 {%- endif -%}
 
 {%- if user is defined -%}
-  {{ parameter("-u" ~ user) }}
+  {{ parameter("-u " ~ user) }}
 {%- endif -%}
 "
