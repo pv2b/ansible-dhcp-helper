@@ -1,0 +1,5 @@
+- name: Restart dhcp-helper
+  service:
+    name: dhcp-helper
+    enabled: yes
+    state: restarted

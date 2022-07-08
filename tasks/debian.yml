@@ -1,0 +1,12 @@
+- name: Install dhcp-helper
+  apt:
+    name: dhcp-helper
+    state: present
+    policy_rc_d: 101 # Do not autostart service
+  notify: Restart dhcp-helper
+
+- name: Configure dhcp-helper
+  template:
+    src: dhcp-helper.j2
+    dest: /etc/default/dhcp-helper
+  notify: Restart dhcp-helper
